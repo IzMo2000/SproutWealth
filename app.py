@@ -5,8 +5,9 @@ import search_form
 # initialize flask app
 app = Flask(__name__)
 
+
 # define home page
-@app.route("/", methods=['GET'])                          
+@app.route("/", methods=['GET'])
 def home_page():
     # get form data
     investment = InvestmentForm()
@@ -18,11 +19,13 @@ def home_page():
     # gonna need to add some parameters here....
     return render_template('[INSERT HOME PAGE HTML NAME]')
 
+
 # define search result apge
 @app.route("/result", methods=['GET', 'POST'])
 def search_result():
 
     return render_template('[INSERT SEARCH HTML NAME]')
+
 
 # define route to update_server, connecting git repo to PythonAnywhere
 @app.route("/update_server", methods=['POST'])
@@ -35,6 +38,8 @@ def webhook():
     else:
         return 'Wrong event type', 400
 
+
 # start server
-if __name__ == '__main__':               
-    app.run(debug=True, host="0.0.0.0")       
+if __name__ == '__main__':
+    app.run(debug=True, host="0.0.0.0")
+     
