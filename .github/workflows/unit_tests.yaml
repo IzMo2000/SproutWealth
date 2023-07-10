@@ -23,7 +23,7 @@ jobs:
       - name: Test investment form
         run: python3 tests/test_form.py
      
-      - name: Test investment form
+      - name: Test alpha vantage
         run: python3 tests/test_alpha_vantage.py
     
       - name: Code coverage report  # Ask Elizabeth about combining coverage reports
