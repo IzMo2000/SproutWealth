@@ -50,7 +50,9 @@ def home_page():
 @app.route("/result", methods=['GET'])
 def search_result():
 
-    return '<p>This would be the result page</p>'
+
+    return render_template('result.html', stock_open=10, stock_high=15, stock_low=9,stock_close=11)
+
 
 # define route to update_server, connecting git repo to PythonAnywhere
 @app.route("/update_server", methods=['POST'])
