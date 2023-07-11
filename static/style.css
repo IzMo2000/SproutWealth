@@ -88,3 +88,29 @@ video{
         height: 8%;
     }
 }
+
+/* Results Page */
+
+.results_body{
+    margin: 50px;
+}
+
+.outline{
+    border-style: solid;
+    border-width: 1px;
+    height: 100%;
+}
+
+.list_no_decoration{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.link_no_decoration{
+    text-decoration: none;
+    color: black;
+}
+
+@media screen and (max-width: 1000px){
+}

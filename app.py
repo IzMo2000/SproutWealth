@@ -48,7 +48,7 @@ def home_page():
 @app.route("/result", methods=['GET', 'POST'])
 def search_result():
 
-    return render_template('[INSERT SEARCH HTML NAME]')
+    return render_template('result.html', stock_open=10, stock_high=15, stock_low=9,stock_close=11)
 
 # define route to update_server, connecting git repo to PythonAnywhere
 @app.route("/update_server", methods=['POST'])
