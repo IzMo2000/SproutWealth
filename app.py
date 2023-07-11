@@ -3,6 +3,16 @@ from flask_behind_proxy import FlaskBehindProxy
 from flask_sqlalchemy import SQLAlchemy
 import git
 from search_form import InvestmentForm
+from alpha_vantage.timeseries import TimeSeries
+
+ts = TimeSeries(key='I0C349XI5KUR4NUR')
+# Get json object with the intraday data and another with  the call's metadata
+data, meta_data = ts.get_intraday('GOOGL')
+
+most_recent_data = data[list(data.keys())[0]]
+
+print(most_recent_data)
+
 
 # initialize flask app
 app = Flask(__name__)
@@ -28,6 +38,7 @@ db = SQLAlchemy(app)
 #     db.create_all()
 
 
+
 # define home page
   
 @app.route("/home", methods=['GET', 'POST'])
@@ -51,7 +62,8 @@ def home_page():
 def search_result():
 
 
-    return render_template('result.html', stock_open=10, stock_high=15, stock_low=9,stock_close=11)
+    return render_template('result.html', stock_open=most_recent_data['1. open'], stock_high=most_recent_data['2. high'], 
+                           stock_low=most_recent_data['3. low'],stock_close=most_recent_data['4. close'])
 
 
 # define route to update_server, connecting git repo to PythonAnywhere
