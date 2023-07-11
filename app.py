@@ -29,6 +29,8 @@ db = SQLAlchemy(app)
 
 
 # define home page
+  
+@app.route("/home", methods=['GET'])
 @app.route("/", methods=['GET'])
 def home_page():
     # get form data
@@ -39,7 +41,7 @@ def home_page():
         return redirect(url_for('search_result'))
 
     # gonna need to add some parameters here....
-    return render_template('[INSERT HOME PAGE HTML NAME]')
+    return render_template('home.html')
 
 
 # define search result apge
@@ -47,7 +49,6 @@ def home_page():
 def search_result():
 
     return render_template('[INSERT SEARCH HTML NAME]')
-
 
 # define route to update_server, connecting git repo to PythonAnywhere
 @app.route("/update_server", methods=['POST'])
@@ -62,5 +63,6 @@ def webhook():
 
 
 # start server
-if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0")
+
+if __name__ == '__main__':               
+    app.run(debug=True, host="0.0.0.0")        

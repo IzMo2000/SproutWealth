@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+    <video width="100%" autoplay="autoplay" autoplay loop> 
+        <source src={{ url_for("static", filename="../static/light_background.mp4") }} type="video/mp4">
+    </video>
+    <div class="home_landing_page">
+        <h1 class=""> Welcome to SproutWealth! </h1>
+        <form>
+            <div class="input-group input-group-lg user_form_input">
+                <input type="text" class="form-control" placeholder="Enter Amount to Invest" aria-describedby="button-addon2"> </input>
+                <button class="btn btn-outline-dark" type="button" id="button-addon2" style="text-style: bold;"> Submit </button>
+            </div>
+            <p class="center_object"> Scroll For More </p>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-down-circle center_object scroll_down_arrow" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+            </svg>
+        </form>
+    </div>
+    <div class="rest_of_body">
+        <br>
+        <div class="company_explanation">
+            <h1 class="center_object"> What we do </h1>
+            <p> We believe that investing your money is key to long term growth. Everyday people become uncertain with their finances, and we want to help. </p>
+            <p> With our product, all you have to do is enter a desired amount you would like to invest, and we do the rest. </p>
+            <p> Our program will give you different ways to invest your money. We offer resources for the stock and crypto market, but also offer you insight to the current US economy! </p>
+            <p> We aim to educate those who are new to finance, and we will do our very best to explain everything in an easy to follow way. </p>
+        </div>
+        <img class="center_object" width="10%;" src={{ url_for("static", filename="../static/arrow_down.png") }}>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-5">
+                <img class="image_resize center_object" src={{ url_for("static", filename="../static/bear_bull.png") }}>
+            </div>
+            <div class="col-md-5 align-self-center" style="display: block; margin-left: auto; margin-right: auto;">
+                <h2 class="center_object"> Stock Market </h2>
+                <hr>
+                <p> The stock market has always been a challenge for individuals to be comfortable with. We get it, all the numbers moving and colors changing, the market can look very intimidating. However with only a few minutes of studying what the market is, we promise you'll get the hang of it! </p>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 100px; margin-bottom: 100px;">
+            <div class="col-md-5 align-self-center" style="display: block; margin-left: auto; margin-right: auto;">
+                <h2 class="center_object"> Crypto Market </h2>
+                <hr>
+                <p> The Crypto market is very new, and is always changing. Before understand the cyrpto market, it's probably best to start with the stock market, as the principles are very similar. Nevertheless, the crypto market ist he epitome of high risk high reward. </p>
+            </div>
+
+            <div class="col-md-5">
+                <img class="image_resize center_object" src={{ url_for("static", filename="../static/crypto_market.png") }}>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
