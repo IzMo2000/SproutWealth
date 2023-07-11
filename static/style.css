@@ -43,6 +43,10 @@ body{
     width: 75%;
 }
 
+.dollar-sign {
+    height: 60px;
+}
+
 video{
     position: fixed;
     z-index: -1;

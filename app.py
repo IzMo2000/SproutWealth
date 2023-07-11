@@ -30,25 +30,27 @@ db = SQLAlchemy(app)
 
 # define home page
   
-@app.route("/home", methods=['GET'])
-@app.route("/", methods=['GET'])
+@app.route("/home", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def home_page():
     # get form data
     investment = InvestmentForm()
 
     # check form data
     if investment.validate_on_submit():
+
+
         return redirect(url_for('search_result'))
 
     # gonna need to add some parameters here....
-    return render_template('home.html')
+    return render_template('home.html', form=investment)
 
 
-# define search result apge
-@app.route("/result", methods=['GET', 'POST'])
+# define search result page
+@app.route("/result", methods=['GET'])
 def search_result():
 
-    return render_template('[INSERT SEARCH HTML NAME]')
+    return '<p>This would be the result page</p>'
 
 # define route to update_server, connecting git repo to PythonAnywhere
 @app.route("/update_server", methods=['POST'])

@@ -20,6 +20,10 @@ class AppTests(unittest.TestCase):
     def test_result_page(self):
         response = self.app.get('/result', follow_redirects=True)
         self.assertEqual(response.status_code, 200)
+    
+    # ... test routes
+
+    # 
 
 if __name__ == "__main__":
     unittest.main()
