@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, flash, redirect, request
 from flask_behind_proxy import FlaskBehindProxy
 from flask_sqlalchemy import SQLAlchemy
 import git
-import search_form
+from search_form import InvestmentForm
 
 # initialize flask app
 app = Flask(__name__)
