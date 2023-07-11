@@ -5,11 +5,24 @@
     </video>
     <div class="home_landing_page">
         <h1 class=""> Welcome to SproutWealth! </h1>
-        <form>
-            <div class="input-group input-group-lg user_form_input">
-                <input type="text" class="form-control" placeholder="Enter Amount to Invest" aria-describedby="button-addon2"> </input>
-                <button class="btn btn-outline-dark" type="button" id="button-addon2" style="text-style: bold;"> Submit </button>
-            </div>
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <div class="input-group form-group input-group-lg user_form_input">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text dollar-sign">$</span>
+                    </div>
+                    {{ form.investment(class="form-control" ~ (' is-invalid' if form.investment.errors) ~ '', placeholder="Enter Amount to Invest") }}
+                    {{ form.submit(class="btn btn-outline-dark button_light_bg", style="text-style: bold;") }}
+                    {% if form.investment.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.investment.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </fieldset>
             <p class="center_object"> Scroll For More </p>
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-down-circle center_object scroll_down_arrow" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
@@ -20,10 +33,10 @@
         <br>
         <div class="company_explanation">
             <h1 class="center_object"> What we do </h1>
-            <p> We believe that investing your money is key to long term growth. Everyday people become uncertain with their finances, and we want to help. </p>
+            <p> We believe that investing is key to long term financial growth. We want to help create a world where everyone can be sure of their Finances. </p>
             <p> With our product, all you have to do is enter a desired amount you would like to invest, and we do the rest. </p>
             <p> Our program will give you different ways to invest your money. We offer resources for the stock and crypto market, but also offer you insight to the current US economy! </p>
-            <p> We aim to educate those who are new to finance, and we will do our very best to explain everything in an easy to follow way. </p>
+            <p> We educate those who are new to finance. At every step, we will explain finance concepts in an easy to follow way. </p>
         </div>
         <img class="center_object" width="10%;" src={{ url_for("static", filename="../static/arrow_down.png") }}>
         <br>
@@ -44,7 +57,7 @@
             <div class="col-md-5 align-self-center" style="display: block; margin-left: auto; margin-right: auto;">
                 <h2 class="center_object"> Crypto Market </h2>
                 <hr>
-                <p> The Crypto market is very new, and is always changing. Before understand the cyrpto market, it's probably best to start with the stock market, as the principles are very similar. Nevertheless, the crypto market ist he epitome of high risk high reward. </p>
+                <p> The Crypto market is very new, and is always changing. Before understanding the cyrpto market, it's best to start with the stock market, as the principles are very similar. Nevertheless, the crypto market is the epitome of high risk high reward. </p>
             </div>
 
             <div class="col-md-5">
