@@ -2,18 +2,34 @@
 {% block content %}
     <div class="results_body">
         <div class="row">
-            <div class="col-md-3 outline text-center">
-                <h1> Stock Market </h1>
+            <div class="col-md-3 outline">
+                <h1 class="text-center"> Stock Market </h1>
                 <ul>
-                    <li class="list_no_decoration"> <a class="link_no_decoration" href="#"> Lorem Ipsum </a> </li>
-                    <li class="list_no_decoration"> <a class="link_no_decoration" href="#"> Lorem Ipsum </a> </li>
+                    <li class="list_no_decoration"> <a class="link_no_decoration" href="#what_stock_market"> - What is the market? </a> </li>
+                    <li class="list_no_decoration"> <a class="link_no_decoration" href="#what_is_stock"> - What is a stock? </a> </li>
+                    <li class="list_no_decoration"> <a class="link_no_decoration" href="#graph_mean"> - Graph? </a> </li>
+                    <li class="list_no_decoration"> <a class="link_no_decoration" href="#graph_text_mean"> - Text under graph? </a> </li>
                 </ul>
             </div>
 
-            <div class="col-md-8 text-center">
-                <img width="100%"src={{ url_for("static", filename="../static/bear_bull.png") }}>
-                <p>Displaying data for Google:</p>
-                <p>Market Open: ${{ stock_open }}, Market High: ${{ stock_high }}, Market Low: ${{ stock_low }}, Market Close ${{ stock_close }}</p>
+            <div class="col-md-8">
+                <img class="text-center" width="100%"src={{ url_for("static", filename="../static/bear_bull.png") }}>
+                <p class="text-center"> Displaying Data for Google:</p>
+                <p class="text-center"> Market Open: ${{ stock_open }}, Market High: ${{ stock_high }}, Market Low: ${{ stock_low }}, Market Close ${{ stock_close }}</p>
+                <br>
+
+                <div class="explain_section">
+                    <h2 id="what_stock_market"> What is the stock market? </h2>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac egestas justo, vel condimentum <b>nisl.</b> Ut rutrum nunc ut turpis tristique, vel maximus eros consequat. Ut sollicitudin odio id ligula porttitor, in viverra turpis lobortis. Nam sodales rutrum arcu, sit amet sodales nibh luctus et. Nunc feugiat metus non magna bibendum, non suscipit ex semper. Ut mollis sit amet eros non lacinia. Proin condimentum accumsan leo ut porta. Etiam accumsan mattis justo, non pharetra magna euismod vitae. Sed euismod facilisis odio sed hendrerit. Nulla ac bibendum magna, ut dapibus nulla. <b>Mauris laoreet luctus orci.</b> Quisque leo diam, auctor vel tincidunt ut, interdum nec dui. </p>
+                    <h2 id="what_is_stock"> What exactly is a stock? </h2>
+                        <p> Lorem ipsum dolor <b>sit amet,</b> consectetur adipiscing elit. Sed ac egestas justo, vel condimentum nisl. Ut rutrum nunc ut turpis tristique, vel maximus eros consequat. Ut sollicitudin odio id ligula porttitor, in viverra turpis lobortis. Nam sodales rutrum arcu, sit amet sodales nibh luctus et. Nunc feugiat metus non magna bibendum, non suscipit ex semper. Ut mollis sit amet eros non lacinia. Proin condimentum accumsan leo ut porta. Etiam accumsan mattis justo, non pharetra magna euismod vitae. Sed euismod facilisis odio sed hendrerit. <b>Nulla ac bibendum magna,</b> ut dapibus nulla. Mauris laoreet luctus orci. Quisque leo diam, auctor vel tincidunt ut, interdum nec dui. </p>
+                    <h2 id="graph_mean"> Okay okay, what does the graph above mean? </h2>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac <b>egestas</b> justo, vel condimentum nisl. Ut rutrum nunc ut turpis tristique, vel maximus eros consequat. Ut sollicitudin odio id ligula porttitor, in viverra turpis lobortis. Nam sodales rutrum arcu, sit amet sodales nibh luctus et. Nunc feugiat metus non magna bibendum, non suscipit ex semper. Ut mollis sit amet eros non lacinia. Proin condimentum accumsan leo ut porta. Etiam accumsan mattis justo, non pharetra magna euismod vitae. Sed euismod facilisis odio sed hendrerit. Nulla ac bibendum magna, ut dapibus nulla. Mauris laoreet luctus orci. <b>Quisque leo diam,</b> auctor vel tincidunt ut, interdum nec dui. </p>
+                    
+                    <h2 id="graph_text_mean"> What about the text under the graph? </h2>
+                        <p> Lorem <b>ipsum dolor sit amet,</b> consectetur adipiscing elit. Sed ac egestas justo, vel condimentum nisl. Ut rutrum nunc ut turpis <b>tristique, vel maximus eros consequat.</b> Ut sollicitudin odio id ligula porttitor, in viverra turpis lobortis. Nam sodales rutrum arcu, sit amet sodales nibh luctus et. Nunc feugiat metus non magna bibendum, non suscipit ex semper. Ut mollis sit amet eros non lacinia. Proin condimentum accumsan leo ut porta. Etiam accumsan mattis justo, non pharetra magna euismod vitae. Sed euismod facilisis odio sed hendrerit. Nulla ac bibendum magna, ut dapibus nulla. Mauris laoreet luctus orci. <b>Quisque leo diam, auctor vel tincidunt ut,</b> interdum nec dui. </p>
+                </div>
+
             </div>
         </div>
     </div>
