@@ -1,0 +1,61 @@
+/* Layout.html CSS */
+body{
+    height: 100%;
+}
+.text_dark_bg{
+    color: white;
+    list-style: none;
+}
+
+.text_dark_bg:hover{
+    color: white;
+}
+
+.button_dark_bg{
+    color: white;
+}
+
+.button_dark_bg:hover{
+    color: white;
+    background-color: gray;
+}
+
+.footer{
+    background-color: #21252a;
+    width: 100%;
+}
+
+
+/* Home Page CSS */
+
+.home_landing_page{
+    margin: 50px;
+    height: 100%;
+}
+
+.user_form_input{
+    margin: auto;
+    padding: 15%;
+    width: 75%;
+}
+
+video{
+    position: fixed;
+    z-index: -1;
+    
+    opacity: 50%;
+}
+
+@media screen and (max-width: 1000px){
+    .user_form_input{
+        width: 100%;
+    }
+}
+
+.rest_of_body{
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    padding: 0px;
+    margin: 0;
+}
