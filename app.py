@@ -1,9 +1,31 @@
 from flask import Flask, render_template, url_for, flash, redirect, request
+from flask_behind_proxy import FlaskBehindProxy
+from flask_sqlalchemy import SQLAlchemy
 import git
 import search_form
 
 # initialize flask app
 app = Flask(__name__)
+proxied = FlaskBehindProxy(app)
+app.config['SECRET_KEY'] = 'f9fc1ee355f6b6051ed273eef250d483'
+
+# connect to database
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///aplha_vantage.db'
+db = SQLAlchemy(app)
+
+# From Codio Work: Model for adding data to database from form 
+#                  (Not sure if we have to do that, though)
+# class (db.Model):
+#   id = db.Column(db.Integer, primary_key=True)
+#   username = db.Column(db.String(20), unique=True, nullable=False)
+#   email = db.Column(db.String(120), unique=True, nullable=False)
+#   password = db.Column(db.String(60), nullable=False)
+
+#   def __repr__(self):
+#     return f"User('{self.username}', '{self.email}')"
+
+#   with app.app_context():
+#     db.create_all()
 
 
 # define home page

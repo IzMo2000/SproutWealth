@@ -1,7 +1,7 @@
 import unittest, sys, os
 
-sys.path.append('../app') # imports python file from parent directory
-from app.app import app
+sys.path.append('../SproutWealth') # imports python file from parent directory
+from app import app
 
 class AppTests(unittest.TestCase):
 
