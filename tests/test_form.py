@@ -6,5 +6,6 @@ sys.path.append('../app') # imports python file from parent directory
 class FormTests(unittest.TestCase):
     pass
 
+    # test that form is properly validated
 if __name__ == "__main__":
     unittest.main()
