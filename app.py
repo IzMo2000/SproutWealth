@@ -53,7 +53,7 @@ def home_page():
 
         return redirect(url_for('search_result'))
 
-    # gonna need to add some parameters here....
+    # return basic home template
     return render_template('home.html', form=investment)
 
 
