@@ -3,33 +3,240 @@
     <div class="results_body">
         <div class="row">
             <div class="col-md-3 outline">
+
+                <!-- Document Outline -->
+
                 <h1 class="text-center"> Stock Market </h1>
                 <ul>
-                    <li class="list_no_decoration"> <a class="link_no_decoration" href="#what_stock_market"> - What is the market? </a> </li>
-                    <li class="list_no_decoration"> <a class="link_no_decoration" href="#what_is_stock"> - What is a stock? </a> </li>
+                    <li class="list_no_decoration"> <a class="link_no_decoration" href="#what_stock_market"> - What's the stock market? </a> </li>
+                    <li class="list_no_decoration"> <a class="link_no_decoration" href="#what_is_stock"> - What's a stock? </a> </li>
                     <li class="list_no_decoration"> <a class="link_no_decoration" href="#graph_mean"> - Graph? </a> </li>
                     <li class="list_no_decoration"> <a class="link_no_decoration" href="#graph_text_mean"> - Text under graph? </a> </li>
+                    <li class="list_no_decoration"> <a class="link_no_decoration" href="#stock_investment"> - Your investment </a> </li>
+                </ul>
+                <h1 class="text-center"> Crypto Market </h1>
+                <ul>
+                    <li class="list_no_decoration"> <a class="link_no_decoration" href="#what_is_crypto_market"> - What's the crypto market? </a> </li>
+                    <li class="list_no_decoration"> <a class="link_no_decoration" href="#what_is_blockchain"> - What's blockchain? </a> </li>
+                    <li class="list_no_decoration"> <a class="link_no_decoration" href="#what_is_stock"> - What's a coin? </a> </li>
+                    <li class="list_no_decoration"> <a class="link_no_decoration" href="#graph_mean"> - Graph? </a> </li>
+                    <li class="list_no_decoration"> <a class="link_no_decoration" href="#graph_text_mean"> - Text under graph? </a> </li>
+                    <li class="list_no_decoration"> <a class="link_no_decoration" href="#crypto_investment"> - Your investment </a> </li>
                 </ul>
             </div>
 
-            <div class="col-md-8">
+            <!-- Stock Market Graph -->
+
+            <div class="col-md-8"> 
+                <br>
+                <h1> Stock Market </h1>
+                <p class="text-center" style="margin-down: 0; padding-down: 0;"> Displaying Data for Google:</p>
                 <img class="text-center" width="100%"src={{ url_for("static", filename="../static/bear_bull.png") }}>
-                <p class="text-center"> Displaying Data for Google:</p>
                 <p class="text-center"> Market Open: ${{ stock_open }}, Market High: ${{ stock_high }}, Market Low: ${{ stock_low }}, Market Close ${{ stock_close }}</p>
                 <br>
 
+            <!-- Stock Market Descriptions -->
+
                 <div class="explain_section">
-                    <h2 id="what_stock_market"> What is the stock market? </h2>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac egestas justo, vel condimentum <b>nisl.</b> Ut rutrum nunc ut turpis tristique, vel maximus eros consequat. Ut sollicitudin odio id ligula porttitor, in viverra turpis lobortis. Nam sodales rutrum arcu, sit amet sodales nibh luctus et. Nunc feugiat metus non magna bibendum, non suscipit ex semper. Ut mollis sit amet eros non lacinia. Proin condimentum accumsan leo ut porta. Etiam accumsan mattis justo, non pharetra magna euismod vitae. Sed euismod facilisis odio sed hendrerit. Nulla ac bibendum magna, ut dapibus nulla. <b>Mauris laoreet luctus orci.</b> Quisque leo diam, auctor vel tincidunt ut, interdum nec dui. </p>
-                    <h2 id="what_is_stock"> What exactly is a stock? </h2>
-                        <p> Lorem ipsum dolor <b>sit amet,</b> consectetur adipiscing elit. Sed ac egestas justo, vel condimentum nisl. Ut rutrum nunc ut turpis tristique, vel maximus eros consequat. Ut sollicitudin odio id ligula porttitor, in viverra turpis lobortis. Nam sodales rutrum arcu, sit amet sodales nibh luctus et. Nunc feugiat metus non magna bibendum, non suscipit ex semper. Ut mollis sit amet eros non lacinia. Proin condimentum accumsan leo ut porta. Etiam accumsan mattis justo, non pharetra magna euismod vitae. Sed euismod facilisis odio sed hendrerit. <b>Nulla ac bibendum magna,</b> ut dapibus nulla. Mauris laoreet luctus orci. Quisque leo diam, auctor vel tincidunt ut, interdum nec dui. </p>
-                    <h2 id="graph_mean"> Okay okay, what does the graph above mean? </h2>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac <b>egestas</b> justo, vel condimentum nisl. Ut rutrum nunc ut turpis tristique, vel maximus eros consequat. Ut sollicitudin odio id ligula porttitor, in viverra turpis lobortis. Nam sodales rutrum arcu, sit amet sodales nibh luctus et. Nunc feugiat metus non magna bibendum, non suscipit ex semper. Ut mollis sit amet eros non lacinia. Proin condimentum accumsan leo ut porta. Etiam accumsan mattis justo, non pharetra magna euismod vitae. Sed euismod facilisis odio sed hendrerit. Nulla ac bibendum magna, ut dapibus nulla. Mauris laoreet luctus orci. <b>Quisque leo diam,</b> auctor vel tincidunt ut, interdum nec dui. </p>
+                    <h2 id="what_stock_market"> <b>What is the stock market?</b> </h2>
+                        <p> The stock market very simply is the trading of securities. This means, that when a company wants to sell pieces of themselves in exchange for money, they can so you the investor can purchase those pieces. Depending on the company, they can issue more pieces of themselves to sell and as more people buy the more expensive the company becomes. This brings us to our first term <em> market cap </em>
+                            <ul> 
+                                <li><b>Market Cap</b>: The valuation of a company that is dependant on the amount of shares it has issues by what each share is selling form. For example, if we take Apple, they have a market cap of 2.98 because when we multiply the total amount of shares investors have bought by it's current trade value per share we get around 2.98 trillion dollars. </li>
+                            </ul>
+                            The stock market is build on a supply and demand chain. As people purchase a stock the stock increases in value, and as people sell a stock the stock decreases. However, stocks don't always have to be companies. A stock can be real estate, a collection of companies, economic securites, etcetera! The stock market is huge, it extends beyond the United States even. As long as you remember that the market is built on the basis of supply and demand, when you start putting money in the market it's much easier to understand why you're money is going up and down.
+                        </p>
+
+                    <h2 id="what_is_stock"> <b> What exactly is a stock? </b> </h2>
+                        <p> A stock is very simply a small portion of a company. But, what does this mean? Imagine this- if you take the company and break it up to tiny little pieces, each of those pieces of a stock (or also called a share). Each of those pieces of those pieces when added together equates to the whole company, but each company is different with how many pieces it's broken up into. For example:
+                                <br>
+                                <ul>
+                                    <li> Apple is broken up into about: 15 billion pieces, or stocks/shares </li>
+                                    <li> Uber is broken up into about: 2 billion pieces, or stocks/shares </li>
+                                    <li> Realy Income Corp is broken up into about: 660 million pieces, or stocks/shares </li>
+                                </ul>
+                            <br>
+                            <h4> What happens when you own a lot of stock in one company? </h4>
+                            <br>
+                            When you own a large amount of stock in a company, you have a chance to become a part of the board of shareholders in a company. This is when the largest x amount of shareholders meet with the owner and/or CEO of the company (depends on the company how big the board is) to help dictate the direction of the company. Like all of us, the largest shareholders in the company like to know where their money is going, and if the company is doing well to increase the price per share. Remember, the better a company does, the more people buy the stock, and as more people buy the stock the more expensive the price per share (or the company as a whole in general) becomes. This is the purpose of the shareholder's board is to better the company to make their holdings more valuable. 
+                            <br>
+                            <br>
+                            <h4> But, what happens when you own the greatest amount of shares in a company? </h4>
+                            <br>
+                             Well, like we established before, a share is a piece of a company. So if you are the majority shareholder, that means you own the most of that company and essentially own it.
+                        </p>
+                    <h2 id="graph_mean"> <b> Okay okay, what does the graph above mean? </b> </h2>
+                        <p> When you enter the stock market, you will see a ton of graphs and numbers. But before we get to the numbers and what they mean, let's talk about the graph. The graph shows how the stock is doing in x amount of time. When you open the market for the first time it's typically preset to today, so what you see is how the stock is doing today. However you can change the time interval to see how the stock was doing yesterday, a week ago, years, or even decades ago. The y axis represents the trading price and the x axis represents the the point of time for that trade. For example:
+                            <ul>
+                                <li> As we see the line move up the price per share is more expensive, then as the line moves down the price per share is less expensive </li>
+                                <li> Today, when the markets open the price per share was ${{stock_open}} </li>
+                            </ul>
+                            Ultimately, when you break down the components of the graph for a few moments you'll tend to realize that the graph is just telling telling you how much you must spend to own a piece of a company. <b> Just remember, </b> the stock market is build on a supply and demand system. If the stock is going down consistently, that means more people like yourself are losing confidence in the company and are selling their holdings. Then the opposite is true when the market goes up, just keep this in mind to make an informed decision on whether to buy and sell a stock. Everything you see is real money, so please be careful.
+                         </p>
+                    
+                    <h2 id="graph_text_mean"> <b> What about the text under the graph? </b> </h2>
+                        <p> 
+                            The text under the graph are what helps us, the investor, make sound decisions. The stock market does not want to just take your money and run, no, the market wants everyone to understand what it is they are buying. That being said, the most common pieces of information the market gives us are the market open, market high, market low, and the market close. But what does all of this mean?
+                            <ul>
+                                <li> <b>Market Open</b> - The price per share when the stock market opened. </li>
+                                <ul>
+                                    <li> Today's Market open for Google: {{stock_open}} </li>
+                                </ul>
+                                <li> <b> Market High</b> - Today, this is the point at which the stock was most expensive, or at it's highest. </li>
+                                <ul>
+                                    <li> Today's Market high for Google: {{stock_high}} </li>
+                                </ul>
+                                <li> <b> Market Low</b> - Today, this is the point at which the stock was least expensive, or at it's lowest. </li>
+                                <ul>
+                                    <li> Today's Market low for Google: {{stock_low}} </li>
+                                </ul>
+                                <li> <b> Market Close</b> - When the market opens, it closes after each day. So, this is the price per share when the market closed. </li>
+                                <ul>
+                                    <li> Today's Market close (If the market is still open at the time of viewing, this number will constantly change until the market is finally closed for the day) for Google: {{stock_close}} </li>
+                                </ul>
+                            </ul>
+                            <br>
+                            <h4> When do the markets open and close? </h4>
+                            The stock market is open for 6.5 hours. Or more specifically, from 9:30am to 4:00 pm EST Monday through Friday. This is because the Stock Market is built on trading, and each time you submit a buy or sell request it doesn't go through automatically. Someone has to verify the validity of each request, sometimes manually but it also happens automatically. That being said, that's why the Stock Market is only open for 6.5 hours Monday through Friday, and even have holidays off. The markets are closed on:
+                            <ul>
+                                <li> New Year's Day</li>
+                                <li> Martin Luther King. Jr. Day </li>
+                                <li> Washington's Borthday/Presidents' Day </li>
+                                <li> Good Friday </li>
+                                <li> Memorial Day </li>
+                                <li> Juneteenth </li>
+                                <li> Independence Day </li>
+                                <li> Labor Day </li>
+                                <li> Thanksgiving Day </li>
+                                <li> Christmas </li>
+                            </ul>
+                        </p>
+
+                        <h2 id="stock_investment"> <b> Your investment </b> </h2>
+                        <p> With the amount you entered on the home screen, this is what the numbers look like with today's stock prices with a $[User Investment] investment.</p>
+                        <br>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Market Open</th>
+                                <th scope="col">Market High</th>
+                                <th scope="col">Market Low</th>
+                                <th scope="col">Market Close</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Stock 1</th>
+                                    <td>Value 1</td>
+                                    <td>Value 2</td>
+                                    <td>Value 3</td>
+                                    <td>Value 4</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Stock 2</th>
+                                    <td>Value 1</td>
+                                    <td>Value 2</td>
+                                    <td>Value 3</td>
+                                    <td>Value 4</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Stock 3</th>
+                                    <td>Value 1</td>
+                                    <td>Value 2</td>
+                                    <td>Value 3</td>
+                                    <td>Value 4</td>
+                                </tr>
+                            </tbody>
+                            </table> 
+                            <br>
+                </div>
+            
+            <!-- Crypto Market -->
+
+                <br>
+                <h1> Crypto Market </h1>
+                <img class="text-center" width="100%"src={{ url_for("static", filename="../static/crypto_market.png") }}>
+                <p class="text-center"> Displaying Data for Google:</p>
+                <p class="text-center"> Market High: ${{ crypto_high }}, Market Low: ${{ crypto_low }} </p>
+                <br>
+
+            <!-- Crypto Market Descriptions -->
+
+                <div class="crypto_explain_section">
+                    <h2 id="what_is_crypto_market"> What is the crypto market? </h2>
+                        <p> The Crypto market is similar in principle to the Stock Market. It's built on a supply and demand system, so the more people buy a coin the more valuable, and the opposite is true when more people sell. The main difference is the way transactions are verified and completed. The crypto market is all digital, it's is actually called the block chain. </p>
+                        <h2 id="what_is_blockchain"> What is blockchain? </h2>
+                        <p> The blockchain is what makes the crypto market happen. It's built on a peer to <b>peer network</b> (I'll explain what this means a little bit later), and is processed completely digitially. This means that unlike the stock market, you can trade coins at any part of the day 24/7.
+                            <ul>
+                                <li> <b>Peer to Peer network</b> - Multiple computers validate transactions </li>
+                            </ul>
+                            Probably the biggest difference between the stock market and the blockchain is the way it validates transactions. I'm sure most of you have heard the term miners before, well if we didn't have miners no transactions would go through. 
+                            <br>
+                            <br>
+                            <h4> What are miners? </h4>
+                            <br>
+                            Miners are essentially just a bunch of computers. The job of a miner essentially grab chunks of code that contain different transactions. Each transaction can include wallet information, type of coin being validated, and the quantity of that coin being transferred. Each <b>block</b> that a miner goes through has multiple transactions, so sometimes when computing power isn't fast enough miners like to get together other computers (sometimes other people like to join in with you) to validate transactions as well. No you might be wondering,  "Why would I use my computer to validate other transactions? Isn't it harming my computer"? To some degree yes your computer can be harmed in the process of mining, but with each successful block you (the miner) get a miners fee. This miners fee is money that is calculated when the transaction is made, so you being the miner get to keep it since you helped validate it.
+                            <ul>
+                                <li> Block - A series of transactions that need to be validated. It is very difficult for one computer to handle a block, so multiple computers are typically necessary. The miner's fee is separated by how much work a computer did. If a computer does the most work then it gets most of the fee than the one that did the least. </li>
+                            </ul>
+
+                         </p>
+                    <h2 id="what_is_coin"> What exactly is a coin? </h2>
+                        <p> In the grand scheme of things, a coin is just some code that says you own something. This something is what confuses people because they're unsure as to what they are buying. But for the sake of simplicity just know that when you make a purchase the blockchain, all that's happening is that you are essentially buying to rights to some digital asset. When thinking about coins as an investment, treat it similar to a stock because the basic principls are the same. The big number on the screen is how much it is to purchase 1 coin, so as the price goes up the more expensive the coin becomes and the opposite is true going down. </p>
+                    <h2 id="graph_mean"> Okay okay, what about this graph? </h2>
+                        <p> When you enter the crypto market, you will see a ton of graphs and numbers. But before we get to the numbers and what they mean, let's talk about the graph. The graph shows how the coin is doing in x amount of time. When you open the market for the first time it's typically preset to today, so what you see is how the coin is doing today. However you can change the time interval to see how the coin was doing yesterday, a week ago, years, or if the coin existed even decades ago. The y axis represents the trading price and the x axis represents the the point of time for that trade. For example:
+                            <ul>
+                                <li> As we see the line move up the price per coin is more expensive, then as the line moves down the price per coin is less expensive </li>
+                                <li> Today, when the markets open the price per coin is ${{crypto_open}} </li>
+                            </ul>
+                            Ultimately, when you break down the components of the graph for a few moments you'll tend to realize that the graph is just telling telling you how much you must spend to own a piece of a company. <b> Just remember, </b> the crypto market is build on a supply and demand system. If the coin is going down consistently, that means more people like yourself are losing confidence in the stability of a coin and are selling their holdings. Then the opposite is true when the market goes up, just keep this in mind to make an informed decision on whether to buy and sell a coin. Everything you see is real money, so please be careful.
+                         </p>
                     
                     <h2 id="graph_text_mean"> What about the text under the graph? </h2>
-                        <p> Lorem <b>ipsum dolor sit amet,</b> consectetur adipiscing elit. Sed ac egestas justo, vel condimentum nisl. Ut rutrum nunc ut turpis <b>tristique, vel maximus eros consequat.</b> Ut sollicitudin odio id ligula porttitor, in viverra turpis lobortis. Nam sodales rutrum arcu, sit amet sodales nibh luctus et. Nunc feugiat metus non magna bibendum, non suscipit ex semper. Ut mollis sit amet eros non lacinia. Proin condimentum accumsan leo ut porta. Etiam accumsan mattis justo, non pharetra magna euismod vitae. Sed euismod facilisis odio sed hendrerit. Nulla ac bibendum magna, ut dapibus nulla. Mauris laoreet luctus orci. <b>Quisque leo diam, auctor vel tincidunt ut,</b> interdum nec dui. </p>
-                </div>
+                        <p> 
+                            The text under the graph are what helps us, the investor, make sound decisions. The blockchain does not want to just take your money and run, no, the market wants everyone to understand what it is they are buying. That being said, the most common pieces of information the market gives us are the market open, market high, market low, and the market close. But what does all of this mean?
+                            <ul>
+                                <li> <b> Market High</b> - Today, this is the point at which the coin was most expensive, or at it's highest. </li>
+                                <ul>
+                                    <li> Today's coin high for Bitcoin: {{crypto_high}} </li>
+                                </ul>
+                                <li> <b> Market Low</b> - Today, this is the point at which the coin was least expensive, or at it's lowest. </li>
+                                <ul>
+                                    <li> Today's coin low for Bitcoin: {{crypto_low}} </li>
+                                </ul>
+                        </p>
 
+                        <h2 id="crypto_investment"> <b> Your investment </b> </h2>
+                        <p> With the amount you entered on the home screen, this is what the numbers look like with today's coin prices with a $[User Investment] investment.</p>
+                        <br>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Market High</th>
+                                    <th scope="col">Market Low</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Coin 1</th>
+                                    <td>Value 1</td>
+                                    <td>Value 2</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Coin 2</th>
+                                    <td>Value 1</td>
+                                    <td>Value 2</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Coin 3</th>
+                                    <td>Value 1</td>
+                                    <td>Value 2</td>
+                                </tr>
+                            </tbody>
+                            </table> 
+                            <br>
+                </div>
             </div>
         </div>
     </div>

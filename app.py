@@ -63,7 +63,8 @@ def search_result():
 
 
     return render_template('result.html', stock_open=most_recent_data['1. open'], stock_high=most_recent_data['2. high'], 
-                           stock_low=most_recent_data['3. low'],stock_close=most_recent_data['4. close'])
+                           stock_low=most_recent_data['3. low'],stock_close=most_recent_data['4. close'], crypto_high=12,
+                           crypto_low=10)
 
 
 # define route to update_server, connecting git repo to PythonAnywhere
