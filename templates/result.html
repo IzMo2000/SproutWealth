@@ -34,7 +34,7 @@
                 <h1> Stock Market </h1>
                 <h5 class="text-center" style="margin-down: 0; padding-down: 0;"> Displaying Data for Google:</h5>
                 <img class="text-center" width="100%"src={{ url_for("static", filename="../static/GOOGL_plot.png") }}>
-                <p class="text-center"> Market Open: ${{ stock_open }}, Market High: ${{ stock_high }}, Market Low: ${{ stock_low }}, Market Close ${{ stock_close }}</p>
+                <p class="text-center"> Market Open: ${{ "%.2f"|format(google['open']) }}, Market High: ${{ "%.2f"|format(google['high']) }}, Market Low: ${{ "%.2f"|format(google['low']) }}, Market Close ${{ "%.2f"|format(google['close']) }}</p>
                 <br>
 
             <!-- Stock Market Descriptions -->
@@ -70,7 +70,7 @@
                         <p> When you enter the stock market, you will see a ton of graphs and numbers. But before we get to the numbers and what they mean, let's talk about the graph. The graph shows how the stock is doing in x amount of time. When you open the market for the first time it's typically preset to today, so what you see is how the stock is doing today. However you can change the time interval to see how the stock was doing yesterday, a week ago, years, or even decades ago. The y axis represents the trading price and the x axis represents the the point of time for that trade. For example:
                             <ul>
                                 <li> As we see the line move up the price per share is more expensive, then as the line moves down the price per share is less expensive </li>
-                                <li> Today, when the markets open the price per share was ${{stock_open}} </li>
+                                <li> Today, when the markets open the price per share for Google stock was ${{"%.2f"|format(google['open'])}} </li>
                             </ul>
                             Ultimately, when you break down the components of the graph for a few moments you'll tend to realize that the graph is just telling telling you how much you must spend to own a piece of a company. <b style="color: green"> Just remember, </b> the stock market is build on a supply and demand system. If the stock is going down consistently, that means more people like yourself are losing confidence in the company and are selling their holdings. Then the opposite is true when the market goes up, just keep this in mind to make an informed decision on whether to buy and sell a stock. Everything you see is real money, so please be careful.
                          </p>
@@ -81,19 +81,19 @@
                             <ul>
                                 <li> <b style="color: green;">Market Open</b> - The price per share when the stock market opened. </li>
                                 <ul>
-                                    <li> Today's Market open for Google: {{stock_open}} </li>
+                                    <li> Today's Market open for Google: {{"%.2f"|format(google['open'])}} </li>
                                 </ul>
                                 <li> <b style="color: green;"> Market High</b> - Today, this is the point at which the stock was most expensive, or at it's highest. </li>
                                 <ul>
-                                    <li> Today's Market high for Google: {{stock_high}} </li>
+                                    <li> Today's Market high for Google: {{"%.2f"|format(google['high'])}} </li>
                                 </ul>
                                 <li> <b style="color: green;"> Market Low</b> - Today, this is the point at which the stock was least expensive, or at it's lowest. </li>
                                 <ul>
-                                    <li> Today's Market low for Google: {{stock_low}} </li>
+                                    <li> Today's Market low for Google: {{"%.2f"|format(google['low'])}} </li>
                                 </ul>
                                 <li> <b style="color: green;"> Market Close</b> - When the market opens, it closes after each day. So, this is the price per share when the market closed. </li>
                                 <ul>
-                                    <li> Today's Market close (If the market is still open at the time of viewing, this number will constantly change until the market is finally closed for the day) for Google: {{stock_close}} </li>
+                                    <li> Today's Market close (If the market is still open at the time of viewing, this number will constantly change until the market is finally closed for the day) for Google: {{"%.2f"|format(google['close'])}} </li>
                                 </ul>
                             </ul>
                             <br>
@@ -114,7 +114,7 @@
                         </p>
 
                         <h2 id="stock_investment"> <b> Your investment </b> </h2>
-                        <p> With the amount you entered on the home screen, this is what the numbers look like with today's stock prices with a $[User Investment] investment.</p>
+                        <p> With the amount you entered on the home screen, this is what the numbers look like with today's stock prices with a ${{ "%.2f"|format(user_investment) }} investment.</p>
                         <br>
                         <table class="table table-striped">
                             <thead>
@@ -124,33 +124,31 @@
                                 <th scope="col">Market High</th>
                                 <th scope="col">Market Low</th>
                                 <th scope="col">Market Close</th>
+                                <th scope="col">Number of Stocks You Could Buy</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th scope="row">Stock 1</th>
-                                    <td>Value 1</td>
-                                    <td>Value 2</td>
-                                    <td>Value 3</td>
-                                    <td>Value 4</td>
+                                    <th scope="row">Google (GOOGL)</th>
+                                    <td>{{ "%.2f"|format(google['open'])}}</td>
+                                    <td>{{ "%.2f"|format(google['high'])}}</td>
+                                    <td>{{ "%.2f"|format(google['low']) }}</td>
+                                    <td>{{ "%.2f"|format(google['close']) }}</td>
+                                    <td>{{ google['num_stocks'] }}</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Stock 2</th>
-                                    <td>Value 1</td>
-                                    <td>Value 2</td>
-                                    <td>Value 3</td>
-                                    <td>Value 4</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Stock 3</th>
-                                    <td>Value 1</td>
-                                    <td>Value 2</td>
-                                    <td>Value 3</td>
-                                    <td>Value 4</td>
+                                    <th scope="row">Wells Fargo (WFC)</th>
+                                    <td>{{ "%.2f"|format(wells['open']) }}</td>
+                                    <td>{{ "%.2f"|format(wells['high']) }}</td>
+                                    <td>{{ "%.2f"|format(wells['low']) }}</td>
+                                    <td>{{ "%.2f"|format(wells['close']) }}</td>
+                                    <td>{{ wells['num_stocks'] }}</td>
                                 </tr>
                             </tbody>
                             </table> 
                             <br>
+                        <p>To illustrate the affect investing can gave on your finances, if you invested ${{ "%.2f"|format(user_investment) }} in Google shares at the beginning of this month 10 years ago, that would have turned into
+                            <b>${{ "%.2f"|format(ten_year_investment) }}</b> today!
                 </div>
             
             <!-- Crypto Market -->
@@ -158,8 +156,8 @@
                 <br>
                 <h1> Crypto Market </h1>
                 <h5 class="text-center"> Displaying Data for Bitcoin:</h5>
-                <img class="text-center" width="100%"src={{ url_for("static", filename="../static/crypto_market.png") }}>
-                <p class="text-center"> Market High: ${{ crypto_high }}, Market Low: ${{ crypto_low }} </p>
+                <img class="text-center" width="100%"src={{ url_for("static", filename="../static/BTC_plot.png") }}>
+                <p class="text-center"> Market High: ${{ "%.2f"|format(bitcoin['high']) }}, Market Low: ${{ "%.2f"|format(bitcoin['low']) }} </p>
                 <br>
 
             <!-- Crypto Market Descriptions -->
@@ -189,7 +187,7 @@
                         <p> When you enter the crypto market, you will see a ton of graphs and numbers. But before we get to the numbers and what they mean, let's talk about the graph. The graph shows how the coin is doing in x amount of time. When you open the market for the first time it's typically preset to today, so what you see is how the coin is doing today. However you can change the time interval to see how the coin was doing yesterday, a week ago, years, or if the coin existed even decades ago. The y axis represents the trading price and the x axis represents the the point of time for that trade. For example:
                             <ul>
                                 <li> As we see the line move up the price per coin is more expensive, then as the line moves down the price per coin is less expensive </li>
-                                <li> Today, when the markets open the price per coin is ${{crypto_open}} </li>
+                                <li> Today, when the markets open the price per coin is ${{ "%.2f"|format(bitcoin['open']) }} </li>
                             </ul>
                             Ultimately, when you break down the components of the graph for a few moments you'll tend to realize that the graph is just telling telling you how much you must spend to own a piece of a company. <b style="color: green;"> Just remember, </b> the crypto market is build on a supply and demand system. If the coin is going down consistently, that means more people like yourself are losing confidence in the stability of a coin and are selling their holdings. Then the opposite is true when the market goes up, just keep this in mind to make an informed decision on whether to buy and sell a coin. Everything you see is real money, so please be careful.
                          </p>
@@ -200,16 +198,16 @@
                             <ul>
                                 <li> <b style="color: green;"> Market High</b> - Today, this is the point at which the coin was most expensive, or at it's highest. </li>
                                 <ul>
-                                    <li> Today's coin high for Bitcoin: {{crypto_high}} </li>
+                                    <li> Today's coin high for Bitcoin: {{ "%.2f"|format(bitcoin['high']) }} </li>
                                 </ul>
                                 <li> <b style="color:green;"> Market Low</b> - Today, this is the point at which the coin was least expensive, or at it's lowest. </li>
                                 <ul>
-                                    <li> Today's coin low for Bitcoin: {{crypto_low}} </li>
+                                    <li> Today's coin low for Bitcoin: {{ "%.2f"|format(bitcoin['low'])}} </li>
                                 </ul>
                         </p>
 
                         <h2 id="crypto_investment"> <b> Your investment </b> </h2>
-                        <p> With the amount you entered on the home screen, this is what the numbers look like with today's coin prices with a $[User Investment] investment.</p>
+                        <p> With the amount you entered on the home screen, this is what the numbers look like with today's coin prices with a ${{ "%.2f"|format(user_investment) }} investment.</p>
                         <br>
                         <table class="table table-striped">
                             <thead>
@@ -217,23 +215,21 @@
                                     <th scope="col"></th>
                                     <th scope="col">Market High</th>
                                     <th scope="col">Market Low</th>
+                                    <th scope="col">Number of Currency You Could Buy</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th scope="row">Coin 1</th>
-                                    <td>Value 1</td>
-                                    <td>Value 2</td>
+                                    <th scope="row">Bitcoin ('BTC')</th>
+                                    <td>{{ "%.2f"|format(bitcoin['high']) }}</td>
+                                    <td>{{ "%.2f"|format(bitcoin['low']) }}</td>
+                                    <td>{{ "%.4f"|format(bitcoin['num_coins']) }}</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Coin 2</th>
-                                    <td>Value 1</td>
-                                    <td>Value 2</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Coin 3</th>
-                                    <td>Value 1</td>
-                                    <td>Value 2</td>
+                                    <th scope="row">Ethereum ('ETH')</th>
+                                    <td>{{ "%.2f"|format(ethereum['high']) }}</td>
+                                    <td>{{ "%.2f"|format(ethereum['low']) }}</td>
+                                    <td>{{ "%.4f"|format(ethereum['num_coins']) }}</td>
                                 </tr>
                             </tbody>
                             </table> 

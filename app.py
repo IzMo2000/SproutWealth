@@ -1,15 +1,11 @@
 from flask import Flask, render_template, url_for, flash, redirect, request
 from flask_behind_proxy import FlaskBehindProxy
 from flask_sqlalchemy import SQLAlchemy
-from datetime import date
 import git
 import threading
 from search_form import *
 from av_utility import *
 from db_utility import *
-
-todays_date = date.today()
-last_updated = ""
 
 # initialize the database
 init_db()
@@ -18,10 +14,6 @@ init_db()
 app = Flask(__name__)
 proxied = FlaskBehindProxy(app)
 app.config['SECRET_KEY'] = 'f9fc1ee355f6b6051ed273eef250d483'
-
-# connect to database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///aplha_vantage.db'
-db = SQLAlchemy(app)
 
 
 # define home page
@@ -43,32 +35,31 @@ def home_page():
 # define search result page
 @app.route("/result", methods=['GET'])
 def search_result():
-    global last_updated
-    global todays_date
 
     if 'investment' in request.args:
 
+        check_for_db_update()
 
-        todays_date = date.today()
+        investment = round(float(request.args.get('investment', 0)), 2)
 
-        if last_updated != todays_date:
-            update_db()
-            google_price_ten_years_ago = get_ten_year_price('GOOGL')
+        google_data = get_market_data_from_db('GOOGL')
+        google_data['num_stocks'] = calc_num_stocks(investment, google_data['open'])
 
-        investment = float(request.args.get('investment', 0))
+        wells_data = get_market_data_from_db('WFC')
+        wells_data['num_stocks'] = calc_num_stocks(investment, wells_data['open'])
 
-        google_most_recent = get_market_data_from_db('GOOGL')
+        bitcoin_data = get_market_data_from_db('BTC')
+        bitcoin_data['num_coins'] = calc_num_coin(investment, bitcoin_data['open'])
 
-        num_stocks = calc_num_stocks(investment, google_most_recent['open'])
+        ethereum_data = get_market_data_from_db('ETH')
+        ethereum_data['num_coins'] = calc_num_coin(investment, ethereum_data['open'])
 
-        ten_year_investement = calc_ten_yr_investment(investment, google_most_recent['open'], google_price_ten_years_ago)
+        google_price_ten_years_ago = get_ten_year_price('GOOGL')
+
+        ten_year_investment = calc_ten_yr_investment(investment, google_data['open'], google_price_ten_years_ago)
         
-        print(google_most_recent)
-        print(num_stocks)
-        print(ten_year_investement)
-
-        return render_template('result.html', stock_open=google_most_recent['open'], stock_high=google_most_recent['high'], 
-                               stock_low=google_most_recent['low'], stock_close=google_most_recent['close'])
+        return render_template('result.html', google = google_data, wells = wells_data, bitcoin = bitcoin_data, ethereum = ethereum_data, 
+                               user_investment=investment, ten_year_investment = ten_year_investment)
     else:
         return redirect(url_for('home_page'))
       
