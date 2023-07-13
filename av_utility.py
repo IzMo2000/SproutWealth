@@ -69,7 +69,7 @@ def get_ten_year_price(ticker):
 
     url = f'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&month={ten_years_ago}-{curr_month}&outputsize=full&apikey=I0C349XI5KUR4NUR'
     r = requests.get(url)
-    data = r.json()['Time Series (5min)']
+    data = r.json()["Time Series (5min)"]
 
     first_date_in_month = list(data)[-1]
 
