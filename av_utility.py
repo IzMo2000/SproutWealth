@@ -21,7 +21,7 @@ def generate_plot(data, ticker, full_name):
     data.plot()
     plt.title(f'{full_name} ({ticker}) stock history (15 min)')
     plt.show()
-    image_path = f"static/{ticker}_plot.png"
+    image_path = f"/home/IzMo2000/SproutWealth/static/{ticker}_plot.png"
     plt.savefig(image_path, format='png')
 
     return True
