@@ -17,6 +17,9 @@ class AppTests(unittest.TestCase):
         response = self.app.get('/', follow_redirects=True)
         self.assertEqual(response.status_code, 200)
 
+        response = self.app.get('/home', follow_redirects=True)
+        self.assertEqual(response.status_code, 200)
+
     def test_result_page(self):
         response = self.app.get('/result', follow_redirects=True)
         self.assertEqual(response.status_code, 200)

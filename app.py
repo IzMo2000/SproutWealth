@@ -1,17 +1,43 @@
 from flask import Flask, render_template, url_for, flash, redirect, request
 from flask_behind_proxy import FlaskBehindProxy
 from flask_sqlalchemy import SQLAlchemy
+from apscheduler.schedulers.blocking import BlockingScheduler
 import git
-from search_form import InvestmentForm
-from alpha_vantage.timeseries import TimeSeries
+import threading
+from search_form import *
+from av_utility import *
 
-ts = TimeSeries(key='I0C349XI5KUR4NUR')
-# Get json object with the intraday data and another with  the call's metadata
-data, meta_data = ts.get_intraday('GOOGL')
+google_data, metadata, google_most_recent = None, None, None
+google_price_ten_years_ago = None
 
-most_recent_data = data[list(data.keys())[0]]
+ts = init_alpha_vantage()
 
-print(most_recent_data)
+# update alpha vantage data
+def update_alpha_vantage():
+    global google_data
+    global google_most_recent
+    global google_price_ten_years_ago
+
+    google_data = get_ticker_data(ts, 'GOOGL')
+
+    google_most_recent = get_most_recent(google_data)
+
+    generate_plot(google_data, 'GOOGL')
+
+    google_price_ten_years_ago = get_ten_year_price('GOOGL')
+
+# initializes alpha vantage databse
+update_alpha_vantage()
+
+# sets the database to update at midnight
+scheduler = BlockingScheduler()
+scheduler.add_job(update_alpha_vantage, 'cron', hour=0)
+
+# Create a separate thread for the scheduler
+scheduler_thread = threading.Thread(target=scheduler.start)
+
+# Start the scheduler thread
+scheduler_thread.start()
 
 
 # initialize flask app
@@ -38,32 +64,41 @@ db = SQLAlchemy(app)
 #     db.create_all()
 
 
-
 # define home page
-  
 @app.route("/home", methods=['GET', 'POST'])
 @app.route("/", methods=['GET', 'POST'])
 def home_page():
     # get form data
-    investment = InvestmentForm()
+    form = InvestmentForm()
 
     # check form data
-    if investment.validate_on_submit():
-
-
-        return redirect(url_for('search_result'))
+    if form.validate_on_submit():
+        investment = form.investment.data
+        return redirect(url_for('search_result', investment = investment))
 
     # return basic home template
-    return render_template('home.html', form=investment)
+    return render_template('home.html', form=form)
 
 
 # define search result page
 @app.route("/result", methods=['GET'])
 def search_result():
+    if 'investment' in request.args:
+        investment = float(request.args.get('investment', 0))
 
+        google_price_now = google_most_recent['open']
 
-    return render_template('result.html', stock_open=most_recent_data['1. open'], stock_high=most_recent_data['2. high'], 
-                           stock_low=most_recent_data['3. low'],stock_close=most_recent_data['4. close'])
+        num_stocks = calc_num_stocks(investment, google_price_now)
+
+        ten_year_investement = calc_ten_yr_investment(investment, google_price_now, google_price_ten_years_ago)
+
+        print(ten_year_investement)
+        
+
+        return render_template('result.html', stock_open=google_most_recent['open'], stock_high=google_most_recent['high'], 
+                               stock_low=google_most_recent['low'], stock_close=google_most_recent['close'])
+    else:
+        return redirect(url_for('home_page'))
 
 
 # define route to update_server, connecting git repo to PythonAnywhere
