@@ -4,6 +4,7 @@ import datetime
 import requests
 from datetime import datetime
 from alpha_vantage.timeseries import TimeSeries
+from alpha_vantage.cryptocurrencies import CryptoCurrencies
 
 def calc_num_stocks(investment, stock_price):
     return (investment // stock_price)
@@ -13,23 +14,42 @@ def calc_ten_yr_investment(investment, price_now, price_in_past):
 
     return round((num_stocks * price_now), 2)
 
-def generate_plot(data, ticker):
-    data[0]['4. close'].plot()
-    plt.title(f'{ticker} stock history (15 min)')
+def generate_plot(data, ticker, full_name):
+    data.plot()
+    plt.title(f'{full_name} ({ticker}) stock history (15 min)')
     plt.show()
     image_path = f"static/{ticker}_plot.png"
     plt.savefig(image_path, format='png')
 
     return True
 
-def get_most_recent(data):
+def get_cc_symbol_data(cc, symbol):
+    return cc.get_digital_currency_daily(symbol=symbol, market='USD')
 
-    # grab most recent data in intraday data set
+def get_first_av_row(data):
     data_frame = data[0]
 
-    first_row = data_frame.head(1)
+    return data_frame.head(1)
+
+def get_most_recent_cc(data):
+    first_row = get_first_av_row(data)
+    dict_result = {
+        'tag': data[1]['2. Digital Currency Code'],
+        'open': float(first_row['1a. open (USD)'].item()),
+        'high': float(first_row['2a. high (USD)'].item()),
+        'low': float(first_row['3a. low (USD)'].item()),
+        'close': float(first_row['4a. close (USD)'].item())
+    }
+
+    return dict_result
+
+def get_most_recent_stock(data):
+
+    # grab most recent data in intraday data set
+    first_row = get_first_av_row(data)
 
     dict_result = {
+        'tag': data[1]['2. Symbol'],
         'open': float(first_row['1. open'].item()),
         'high': float(first_row['2. high'].item()),
         'low': float(first_row['3. low'].item()),
@@ -56,5 +76,8 @@ def get_ten_year_price(ticker):
 def get_ticker_data(ts, ticker):
     return ts.get_intraday(ticker)
 
-def init_alpha_vantage():
+def init_alpha_vantage_crypto():
+    return CryptoCurrencies(key='I0C349XI5KUR4NUR', output_format='pandas')
+
+def init_alpha_vantage_stock():
     return TimeSeries(key='I0C349XI5KUR4NUR', output_format='pandas')
