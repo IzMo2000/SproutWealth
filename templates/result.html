@@ -30,7 +30,7 @@
             <div class="col-md-8"> 
                 <br>
                 <h1> Stock Market </h1>
-                <p class="text-center" style="margin-down: 0; padding-down: 0;"> Displaying Data for Google:</p>
+                <h5 class="text-center" style="margin-down: 0; padding-down: 0;"> Displaying Data for Google:</h5>
                 <img class="text-center" width="100%"src={{ url_for("static", filename="../static/bear_bull.png") }}>
                 <p class="text-center"> Market Open: ${{ stock_open }}, Market High: ${{ stock_high }}, Market Low: ${{ stock_low }}, Market Close ${{ stock_close }}</p>
                 <br>
@@ -41,7 +41,7 @@
                     <h2 id="what_stock_market"> <b>What is the stock market?</b> </h2>
                         <p> The stock market very simply is the trading of securities. This means, that when a company wants to sell pieces of themselves in exchange for money, they can so you the investor can purchase those pieces. Depending on the company, they can issue more pieces of themselves to sell and as more people buy the more expensive the company becomes. This brings us to our first term <em> market cap </em>
                             <ul> 
-                                <li><b>Market Cap</b>: The valuation of a company that is dependant on the amount of shares it has issues by what each share is selling form. For example, if we take Apple, they have a market cap of 2.98 because when we multiply the total amount of shares investors have bought by it's current trade value per share we get around 2.98 trillion dollars. </li>
+                                <li><b style="color: green;">Market Cap</b>: The valuation of a company that is dependant on the amount of shares it has issues by what each share is selling form. For example, if we take Apple, they have a market cap of 2.98 because when we multiply the total amount of shares investors have bought by it's current trade value per share we get around 2.98 trillion dollars. </li>
                             </ul>
                             The stock market is build on a supply and demand chain. As people purchase a stock the stock increases in value, and as people sell a stock the stock decreases. However, stocks don't always have to be companies. A stock can be real estate, a collection of companies, economic securites, etcetera! The stock market is huge, it extends beyond the United States even. As long as you remember that the market is built on the basis of supply and demand, when you start putting money in the market it's much easier to understand why you're money is going up and down.
                         </p>
@@ -70,26 +70,26 @@
                                 <li> As we see the line move up the price per share is more expensive, then as the line moves down the price per share is less expensive </li>
                                 <li> Today, when the markets open the price per share was ${{stock_open}} </li>
                             </ul>
-                            Ultimately, when you break down the components of the graph for a few moments you'll tend to realize that the graph is just telling telling you how much you must spend to own a piece of a company. <b> Just remember, </b> the stock market is build on a supply and demand system. If the stock is going down consistently, that means more people like yourself are losing confidence in the company and are selling their holdings. Then the opposite is true when the market goes up, just keep this in mind to make an informed decision on whether to buy and sell a stock. Everything you see is real money, so please be careful.
+                            Ultimately, when you break down the components of the graph for a few moments you'll tend to realize that the graph is just telling telling you how much you must spend to own a piece of a company. <b style="color: green"> Just remember, </b> the stock market is build on a supply and demand system. If the stock is going down consistently, that means more people like yourself are losing confidence in the company and are selling their holdings. Then the opposite is true when the market goes up, just keep this in mind to make an informed decision on whether to buy and sell a stock. Everything you see is real money, so please be careful.
                          </p>
                     
                     <h2 id="graph_text_mean"> <b> What about the text under the graph? </b> </h2>
                         <p> 
                             The text under the graph are what helps us, the investor, make sound decisions. The stock market does not want to just take your money and run, no, the market wants everyone to understand what it is they are buying. That being said, the most common pieces of information the market gives us are the market open, market high, market low, and the market close. But what does all of this mean?
                             <ul>
-                                <li> <b>Market Open</b> - The price per share when the stock market opened. </li>
+                                <li> <b style="color: green;">Market Open</b> - The price per share when the stock market opened. </li>
                                 <ul>
                                     <li> Today's Market open for Google: {{stock_open}} </li>
                                 </ul>
-                                <li> <b> Market High</b> - Today, this is the point at which the stock was most expensive, or at it's highest. </li>
+                                <li> <b style="color: green;"> Market High</b> - Today, this is the point at which the stock was most expensive, or at it's highest. </li>
                                 <ul>
                                     <li> Today's Market high for Google: {{stock_high}} </li>
                                 </ul>
-                                <li> <b> Market Low</b> - Today, this is the point at which the stock was least expensive, or at it's lowest. </li>
+                                <li> <b style="color: green;"> Market Low</b> - Today, this is the point at which the stock was least expensive, or at it's lowest. </li>
                                 <ul>
                                     <li> Today's Market low for Google: {{stock_low}} </li>
                                 </ul>
-                                <li> <b> Market Close</b> - When the market opens, it closes after each day. So, this is the price per share when the market closed. </li>
+                                <li> <b style="color: green;"> Market Close</b> - When the market opens, it closes after each day. So, this is the price per share when the market closed. </li>
                                 <ul>
                                     <li> Today's Market close (If the market is still open at the time of viewing, this number will constantly change until the market is finally closed for the day) for Google: {{stock_close}} </li>
                                 </ul>
@@ -155,8 +155,8 @@
 
                 <br>
                 <h1> Crypto Market </h1>
+                <h5 class="text-center"> Displaying Data for Bitcoin:</h5>
                 <img class="text-center" width="100%"src={{ url_for("static", filename="../static/crypto_market.png") }}>
-                <p class="text-center"> Displaying Data for Google:</p>
                 <p class="text-center"> Market High: ${{ crypto_high }}, Market Low: ${{ crypto_low }} </p>
                 <br>
 
@@ -166,16 +166,16 @@
                     <h2 id="what_is_crypto_market"> What is the crypto market? </h2>
                         <p> The Crypto market is similar in principle to the Stock Market. It's built on a supply and demand system, so the more people buy a coin the more valuable, and the opposite is true when more people sell. The main difference is the way transactions are verified and completed. The crypto market is all digital, it's is actually called the block chain. </p>
                         <h2 id="what_is_blockchain"> What is blockchain? </h2>
-                        <p> The blockchain is what makes the crypto market happen. It's built on a peer to <b>peer network</b> (I'll explain what this means a little bit later), and is processed completely digitially. This means that unlike the stock market, you can trade coins at any part of the day 24/7.
+                        <p> The blockchain is what makes the crypto market happen. It's built on a peer to <b style="color: green;">peer network</b> (I'll explain what this means a little bit later), and is processed completely digitially. This means that unlike the stock market, you can trade coins at any part of the day 24/7.
                             <ul>
-                                <li> <b>Peer to Peer network</b> - Multiple computers validate transactions </li>
+                                <li> <b style="color: green;">Peer to Peer network</b> - Multiple computers validate transactions </li>
                             </ul>
                             Probably the biggest difference between the stock market and the blockchain is the way it validates transactions. I'm sure most of you have heard the term miners before, well if we didn't have miners no transactions would go through. 
                             <br>
                             <br>
                             <h4> What are miners? </h4>
                             <br>
-                            Miners are essentially just a bunch of computers. The job of a miner essentially grab chunks of code that contain different transactions. Each transaction can include wallet information, type of coin being validated, and the quantity of that coin being transferred. Each <b>block</b> that a miner goes through has multiple transactions, so sometimes when computing power isn't fast enough miners like to get together other computers (sometimes other people like to join in with you) to validate transactions as well. No you might be wondering,  "Why would I use my computer to validate other transactions? Isn't it harming my computer"? To some degree yes your computer can be harmed in the process of mining, but with each successful block you (the miner) get a miners fee. This miners fee is money that is calculated when the transaction is made, so you being the miner get to keep it since you helped validate it.
+                            Miners are essentially just a bunch of computers. The job of a miner essentially grab chunks of code that contain different transactions. Each transaction can include wallet information, type of coin being validated, and the quantity of that coin being transferred. Each <b style="color: green;">block</b> that a miner goes through has multiple transactions, so sometimes when computing power isn't fast enough miners like to get together other computers (sometimes other people like to join in with you) to validate transactions as well. No you might be wondering,  "Why would I use my computer to validate other transactions? Isn't it harming my computer"? To some degree yes your computer can be harmed in the process of mining, but with each successful block you (the miner) get a miners fee. This miners fee is money that is calculated when the transaction is made, so you being the miner get to keep it since you helped validate it.
                             <ul>
                                 <li> Block - A series of transactions that need to be validated. It is very difficult for one computer to handle a block, so multiple computers are typically necessary. The miner's fee is separated by how much work a computer did. If a computer does the most work then it gets most of the fee than the one that did the least. </li>
                             </ul>
@@ -189,18 +189,18 @@
                                 <li> As we see the line move up the price per coin is more expensive, then as the line moves down the price per coin is less expensive </li>
                                 <li> Today, when the markets open the price per coin is ${{crypto_open}} </li>
                             </ul>
-                            Ultimately, when you break down the components of the graph for a few moments you'll tend to realize that the graph is just telling telling you how much you must spend to own a piece of a company. <b> Just remember, </b> the crypto market is build on a supply and demand system. If the coin is going down consistently, that means more people like yourself are losing confidence in the stability of a coin and are selling their holdings. Then the opposite is true when the market goes up, just keep this in mind to make an informed decision on whether to buy and sell a coin. Everything you see is real money, so please be careful.
+                            Ultimately, when you break down the components of the graph for a few moments you'll tend to realize that the graph is just telling telling you how much you must spend to own a piece of a company. <b style="color: green;"> Just remember, </b> the crypto market is build on a supply and demand system. If the coin is going down consistently, that means more people like yourself are losing confidence in the stability of a coin and are selling their holdings. Then the opposite is true when the market goes up, just keep this in mind to make an informed decision on whether to buy and sell a coin. Everything you see is real money, so please be careful.
                          </p>
                     
                     <h2 id="graph_text_mean"> What about the text under the graph? </h2>
                         <p> 
                             The text under the graph are what helps us, the investor, make sound decisions. The blockchain does not want to just take your money and run, no, the market wants everyone to understand what it is they are buying. That being said, the most common pieces of information the market gives us are the market open, market high, market low, and the market close. But what does all of this mean?
                             <ul>
-                                <li> <b> Market High</b> - Today, this is the point at which the coin was most expensive, or at it's highest. </li>
+                                <li> <b style="color: green;"> Market High</b> - Today, this is the point at which the coin was most expensive, or at it's highest. </li>
                                 <ul>
                                     <li> Today's coin high for Bitcoin: {{crypto_high}} </li>
                                 </ul>
-                                <li> <b> Market Low</b> - Today, this is the point at which the coin was least expensive, or at it's lowest. </li>
+                                <li> <b style="color:green;"> Market Low</b> - Today, this is the point at which the coin was least expensive, or at it's lowest. </li>
                                 <ul>
                                     <li> Today's coin low for Bitcoin: {{crypto_low}} </li>
                                 </ul>

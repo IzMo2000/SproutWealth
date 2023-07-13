@@ -66,6 +66,9 @@ def search_result():
                            stock_low=most_recent_data['3. low'],stock_close=most_recent_data['4. close'], crypto_high=12,
                            crypto_low=10)
 
+@app.route("/resources", methods=['GET'])
+def resource_page():
+    return render_template('resources.html')
 
 # define route to update_server, connecting git repo to PythonAnywhere
 @app.route("/update_server", methods=['POST'])
