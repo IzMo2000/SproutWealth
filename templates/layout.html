@@ -8,10 +8,10 @@
         <nav>
             <div class="navbar bg-dark">
                 <div class="container-fluid">
-                    <h1 class="navbar-brand text_dark_bg"> <a class="link_no_decoration" href={{ url_for("home_page") }} style="color: white;"> SproutWealth </a> </h1>
+                     <a class="navbar-brand link_no_decoration" href={{ url_for("home_page") }} > <img class="navbar_logo" src={{ url_for("static", filename="sproutwealth_logo.png") }}>  </a> 
                     <div>
-                        <button class="btn button_dark_bg"> Home </button>
-                        <button class="btn button_dark_bg"> Resources </button>
+                        <button class="btn button_dark_bg"> <a class="link_no_decoration" href={{ url_for("home_page") }} style="color: white;"> Home </a></button>
+                        <button class="btn button_dark_bg"> <a class="link_no_decoration" href={{ url_for("resource_page") }} style="color: white;"> Resources </a></button>
                     </div>
                 </div>
             </div>

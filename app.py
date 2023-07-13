@@ -48,6 +48,7 @@ def search_result():
 
     if 'investment' in request.args:
 
+
         todays_date = date.today()
 
         if last_updated != todays_date:
@@ -70,7 +71,11 @@ def search_result():
                                stock_low=google_most_recent['low'], stock_close=google_most_recent['close'])
     else:
         return redirect(url_for('home_page'))
+      
 
+@app.route("/resources", methods=['GET'])
+def resource_page():
+    return render_template('resources.html')
 
 # define route to update_server, connecting git repo to PythonAnywhere
 @app.route("/update_server", methods=['POST'])
