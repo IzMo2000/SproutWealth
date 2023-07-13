@@ -1,12 +1,15 @@
 from sqlalchemy import create_engine, Column, String, Float
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+from datetime import date
 import pandas
 from av_utility import *
 
 # ts and cc are objects to pull from the AV API for stock and crypto data
 ts = init_alpha_vantage_stock()
 cc = init_alpha_vantage_crypto()
+
+last_updated = ""
 
 Base = declarative_base()
 
@@ -17,6 +20,15 @@ class MarketInfo(Base):
     high = Column(Float)
     low = Column(Float)
     close = Column(Float)
+
+def check_for_db_update():
+    global last_updated
+
+    todays_date = date.today()
+
+    if todays_date != last_updated:
+        update_db()
+        last_updated = todays_date
 
 def init_db():
     engine = create_engine('sqlite:///aplha_vantage.db')
@@ -75,18 +87,25 @@ def get_market_data_from_db(tag):
     return market_data
 
 def update_db():
-    google_data = get_ticker_data(ts, 'GOOGL')
+    stocks = ['GOOGL', 'WFC']
+    ccs = ['BTC', 'ETH']
 
-    google_most_recent = get_most_recent_stock(google_data)
+    for ticker in stocks:
+        current_data = get_ticker_data(ts, ticker)
 
-    insert_into_db(google_most_recent)
+        most_recent_data = get_most_recent_stock(current_data)
 
-    generate_plot(google_data[0]['4. close'], 'GOOGL', 'Google')
+        insert_into_db(most_recent_data)
 
-    bitcoin_data = get_cc_symbol_data(cc, 'BTC')
+        if ticker == 'GOOGL':
+            generate_plot(current_data[0]['4. close'], 'GOOGL', 'Google')
+    
+    for coin in ccs:
+        current_data = get_cc_symbol_data(cc, coin)
+        
+        most_recent_data = get_most_recent_cc(current_data)
 
-    bitcoin_most_recent = get_most_recent_cc(bitcoin_data)
+        insert_into_db(most_recent_data)
 
-    insert_into_db(bitcoin_most_recent)
-
-    generate_plot(bitcoin_data[0]['4a. close (USD)'], 'BTC', 'Bitcoin')
+        if coin == 'BTC':
+            generate_plot(current_data[0]['4a. close (USD)'], 'BTC', 'Bitcoin')

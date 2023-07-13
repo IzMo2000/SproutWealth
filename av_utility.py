@@ -9,6 +9,9 @@ from alpha_vantage.cryptocurrencies import CryptoCurrencies
 def calc_num_stocks(investment, stock_price):
     return (investment // stock_price)
 
+def calc_num_coin(investment, coin_price):
+    return round((investment / coin_price), 4)
+
 def calc_ten_yr_investment(investment, price_now, price_in_past):
     num_stocks = calc_num_stocks(investment, price_in_past)
 
