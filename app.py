@@ -36,12 +36,16 @@ def home_page():
 @app.route("/result", methods=['GET'])
 def search_result():
 
+    # check that result page received the proper argument from home
     if 'investment' in request.args:
 
+        # check if the database must be updated before results are shown
         check_for_db_update()
 
+        # pull investment data from argument
         investment = round(float(request.args.get('investment', 0)), 2)
 
+        # pull necessary data from SQL database and determine stocks to be bought
         google_data = get_market_data_from_db('GOOGL')
         google_data['num_stocks'] = calc_num_stocks(investment, google_data['open'])
 
@@ -54,16 +58,21 @@ def search_result():
         ethereum_data = get_market_data_from_db('ETH')
         ethereum_data['num_coins'] = calc_num_coin(investment, ethereum_data['open'])
 
+        # get the price of google's stock 10 years ago (close)
         google_price_ten_years_ago = get_ten_year_price('GOOGL')
-
+        
+        # calculate the retroactive 10 year investment
         ten_year_investment = calc_ten_yr_investment(investment, google_data['open'], google_price_ten_years_ago)
         
+        # show result page with necessary data
         return render_template('result.html', google = google_data, wells = wells_data, bitcoin = bitcoin_data, ethereum = ethereum_data, 
                                user_investment=investment, ten_year_investment = ten_year_investment)
+    
+    # no argument detected, redirect to home
     else:
         return redirect(url_for('home_page'))
       
-
+# define route for resources page
 @app.route("/resources", methods=['GET'])
 def resource_page():
     return render_template('resources.html')
@@ -81,6 +90,5 @@ def webhook():
 
 
 # start server
-
 if __name__ == '__main__':               
     app.run(debug=True, host="0.0.0.0")        
