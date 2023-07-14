@@ -5,6 +5,7 @@ import requests
 from datetime import datetime
 from alpha_vantage.timeseries import TimeSeries
 from alpha_vantage.cryptocurrencies import CryptoCurrencies
+import os
 
 def calc_num_stocks(investment, stock_price):
     return (investment // stock_price)
@@ -80,7 +81,7 @@ def get_ticker_data(ts, ticker):
     return ts.get_intraday(ticker)
 
 def init_alpha_vantage_crypto():
-    return CryptoCurrencies(key='I0C349XI5KUR4NUR', output_format='pandas')
+    return CryptoCurrencies(key=os.environ.get('ALPHA_VANTAGE_KEY'), output_format='pandas')
 
 def init_alpha_vantage_stock():
-    return TimeSeries(key='I0C349XI5KUR4NUR', output_format='pandas')
+    return TimeSeries(key=os.environ.get('ALPHA_VANTAGE_KEY'), output_format='pandas')
