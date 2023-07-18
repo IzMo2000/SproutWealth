@@ -156,4 +156,4 @@ def update_db():
         insert_into_db(most_recent_data)
 
         if coin == 'BTC':
-            generate_plot(current_data[0]['4a. close (USD)'], 'BTC', 'Bitcoin')
+            generate_plot(current_data[0]['4b. close (USD)'], 'BTC', 'Bitcoin')
