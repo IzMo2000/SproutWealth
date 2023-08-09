@@ -16,4 +16,3 @@ class InvestmentForm(FlaskForm):
 
     # defines a submit button
     submit = SubmitField('Show Results')
-    

@@ -1,16 +1,16 @@
 #########################################################
-###
-### Utility for interfacing with the alphavantage API
-### Written By: Izaac Molina
-### Last Updated: 7/13/2023
-###
-### Note: The environment variable "ALPHAVANTAGE_API_KEY"
-### must be set to use this functionality. This key
-### allows you to access the alpha vantage API
-###
-### You can get an API key at:
-### https://www.alphavantage.co/support/#api-key
-###
+#
+# Utility for interfacing with the alphavantage API
+# Written By: Izaac Molina
+# Last Updated: 7/13/2023
+#
+# Note: The environment variable "ALPHAVANTAGE_API_KEY"
+# must be set to use this functionality. This key
+# allows you to access the alpha vantage API
+#
+# You can get an API key at:
+# https://www.alphavantage.co/support/#api-key
+#
 #########################################################
 
 # import libraries
@@ -22,6 +22,7 @@ from datetime import datetime
 from alpha_vantage.timeseries import TimeSeries
 from alpha_vantage.cryptocurrencies import CryptoCurrencies
 import os
+
 
 # function: calc_num_stocks
 # input: investment (float) and stock price (float)
@@ -41,13 +42,14 @@ def calc_num_coin(investment, coin_price):
 
 # function: calc_ten_yr_investment
 # input: investment (float), price of stock now (float),
-#        price of stock at the beginning of the month 10 
+#        price of stock at the beginning of the month 10
 #        years ago (float)
 # output: investment worth after 10 years (float)
 def calc_ten_yr_investment(investment, price_now, price_in_past):
     num_stocks = calc_num_stocks(investment, price_in_past)
 
     return round((num_stocks * price_now), 2)
+
 
 # function: generate_plot
 # input: pandas dataframe containing stock/coin data, ticker/symbol name
@@ -68,7 +70,7 @@ def generate_plot(data, ticker, full_name):
 
 
 # function: get_cc_symbol_data
-# input: object to access alpha vantage crypto data, symvbol for coin to 
+# input: object to access alpha vantage crypto data, symvbol for coin to
 #        find data on
 # output: returns pandas data frame of cryptocurrency data
 def get_cc_symbol_data(cc, symbol):
@@ -133,15 +135,20 @@ def get_ten_year_price(ticker):
     # determine year that was ten years ago
     ten_years_ago = str(datetime.now().year - 10)
 
+    # grab ten year price from API using a get request,
+    # convert called data to json
+    url = (
+        'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&'
+        f'symbol={ticker}&interval=5min&month={ten_years_ago}-{curr_month}'
+        '&outputsize=full&apikey=I0C349XI5KUR4NUR'
+    )
 
-    # grab ten year price from API using a get request, convert called data to json
-    url = f'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&month={ten_years_ago}-{curr_month}&outputsize=full&apikey=I0C349XI5KUR4NUR'
     r = requests.get(url)
     data = r.json()["Time Series (5min)"]
 
     # get the data point at the beginning of the month
     first_date_in_month = list(data)[-1]
-    
+
     # return the price ten years ago at the beginning of the month
     return float(data[first_date_in_month]['4. close'])
 
