@@ -1,10 +1,10 @@
 #########################################################
-###
-### Utility for managing stock and crypto data from alpha
-### vantage API using a SQL database
-### Written By: Izaac Molina
-### Last Updated: 7/13/2023
-###
+#
+# Utility for managing stock and crypto data from alpha
+# vantage API using a SQL database
+# Written By: Izaac Molina
+# Last Updated: 7/13/2023
+#
 #########################################################
 
 from sqlalchemy import create_engine, Column, String, Float
@@ -57,7 +57,7 @@ def check_for_db_update():
 def init_db():
     # start session
     session, engine = start_db_session()
-    
+
     # create database
     Base.metadata.create_all(engine)
 
@@ -146,11 +146,11 @@ def update_db():
 
         if ticker == 'GOOGL':
             generate_plot(current_data[0]['4. close'], 'GOOGL', 'Google')
-    
+
     # upload all crypto data
     for coin in ccs:
         current_data = get_cc_symbol_data(cc, coin)
-        
+
         most_recent_data = get_most_recent_cc(current_data)
 
         insert_into_db(most_recent_data)
