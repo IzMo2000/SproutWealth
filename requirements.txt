@@ -13,3 +13,4 @@ pycodestyle
 pytest
 Werkzeug==2.3.6
 pandas==2.0.2
+matplotlib==3.7.2
