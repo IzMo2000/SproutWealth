@@ -70,11 +70,11 @@ def generate_plot(data, ticker, full_name):
 
 
 # function: get_cc_symbol_data
-# input: object to access alpha vantage crypto data, symvbol for coin to
+# input: object to access alpha vantage crypto data, symbol for coin to
 #        find data on
 # output: returns pandas data frame of cryptocurrency data
 def get_cc_symbol_data(cc, symbol):
-    return cc.get_digital_currency_daily(symbol=symbol, market='USD')
+    return cc.get_digital_currency_daily(symbol=symbol, market='CNY')
 
 
 # function: get_first_av_row
@@ -88,17 +88,17 @@ def get_first_av_row(data):
     return data_frame.head(1)
 
 
-# function: get_first_av_row
-# input: pandas data taken from AV api
-# output: returns data from first row of pandas dataframe
+# function: get_most_recent_cc
+# input: pandas crypto data
+# output: returns dictionary of the most recent crypto info
 def get_most_recent_cc(data):
     first_row = get_first_av_row(data)
     dict_result = {
         'tag': data[1]['2. Digital Currency Code'],
-        'open': float(first_row['1a. open (USD)'].item()),
-        'high': float(first_row['2a. high (USD)'].item()),
-        'low': float(first_row['3a. low (USD)'].item()),
-        'close': float(first_row['4a. close (USD)'].item())
+        'open': float(first_row['1b. open (USD)'].item()),
+        'high': float(first_row['2b. high (USD)'].item()),
+        'low': float(first_row['3b. low (USD)'].item()),
+        'close': float(first_row['4b. close (USD)'].item())
     }
 
     return dict_result

@@ -151,9 +151,11 @@ def update_db():
     for coin in ccs:
         current_data = get_cc_symbol_data(cc, coin)
 
+        print(current_data)
+
         most_recent_data = get_most_recent_cc(current_data)
 
         insert_into_db(most_recent_data)
 
         if coin == 'BTC':
-            generate_plot(current_data[0]['4a. close (USD)'], 'BTC', 'Bitcoin')
+            generate_plot(current_data[0]['4b. close (USD)'], 'BTC', 'Bitcoin')
