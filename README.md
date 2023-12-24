@@ -9,8 +9,6 @@ This is where SproutWealth comes in! SproutWealth is a web app designed to help 
 We let you see how a small investment can pay off big time in the future, explaining all the financial jargon along the way. We also provide links to other
 financial resources to help further your literacy journey
 
-You can find a live version of SproutWealth [here](http://izmo2000.pythonanywhere.com/)
-
 # About SproutWealth
 
 ## Technologies
